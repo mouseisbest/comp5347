@@ -365,3 +365,20 @@ var person = {
 
 中间件 w6 p28
 
+
+
+---
+##week11 Security
+###General security concerns
+- Threats exist in different forms
+	- To single computer and network
+	- To both server and client side
+- Four main concept in server security
+	- Authentication:
+		- Who you are
+	- Authorization:
+		- What you can / are allowed to see
+	- Confidentiality:
+		- Maintain the privacy for data you are storing & transferring 
+	- Data integrity:
+		- Data is accurate & correct
