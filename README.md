@@ -492,5 +492,38 @@ var person = {
 		- Authentication server: issues tokens to the client upon identified owener.
 - Cryptography:
 	- Early cipher attempt: Vigenère cipher
-		-
+		- The key phrase is written below the message and the letters are added together to form the cipher text as illustrated
+	- Modern Block Ciphers
+		- encrypt and decrypt messages using an iterative replacing of a message with another scrambled message using 64 or 128 bits at a time.
+		- Data Encryption Standard (DES), replacement: Advanced Encryption Standard (AES).
+	- Symmetric Key Problem
+		- Same key to encode and decode
+		- Distribution of the key among communication is a problem
+	- Public key encryption e.g. RSA
+		- Public key cryptography solves symmetric key encryption problem of having to exchange secret key
+		- Public key: widely transferred; private key: kept by owner
+		- Once a key is used to encrypt message, same key cannot be used to decrypt message
+		- To ensure public key's identity, use a trusted third party (Certification Authority)
+	- Digital certificates
+		- Includes name, subject's public key, digital certificate serial number, expiration date, issue date, digital signature of CA.
+	- HTTPS
+		- is HTTP running on top of Transport Layer Security (TLS)
+	- TLS (former: Secure Sockets Layer, SSL)
+		- Authenticate transmission parties (mainly the server) using public-key encryption
+		- Use symmetric key encryption to encrypt the data transmitted
+		- 
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
