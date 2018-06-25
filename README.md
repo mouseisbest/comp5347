@@ -1,5 +1,4 @@
-
-# æŠ¼é¢˜
+# 押题
 ---
 ## week 1 how web works
 - protocol is a set of rules that partners in communication use when they communicate.
@@ -7,13 +6,13 @@
 - request methods: HTTP/1.0(GET, POST, HEAD) & HTTP/1.1(GET, POST, HEAD, PUT, DELETE)
 - HTTP Response status code: 1XX, 2XX, 3XX, 4XX, 5Xx
 - RTT: time to send a small packet to travel from client to server and back.
-- â€“	Response time:  
+- –	Response time:  
 one RTT to initiate TCP connection  
 one RTT for HTTP request and first few bytes of HTTP response to return  
 file transmission time  
 total = 2RTT+transmit time  
 - TTFB: time to first byte: one RTT plus server processing time.
-- persistent HTTP: HTTP é•¿è¿žæŽ¥ï¼Œ 1.1é»˜è®¤
+- persistent HTTP: HTTP 长连接， 1.1默认
 - caching in HTTP <span style="color: red">(important)</span>
 	``` 
 	- goal of caching:
@@ -25,16 +24,16 @@ total = 2RTT+transmit time
 			- a "calidation" mechanism
 	- level of caches: server side, client side (proxy and browser)
 	- cache correctness: 
-		- It has been checked for equivalence with what the origin server would have returned by revalidating the response with the origin server å‘é€è¯·æ±‚ç»™æºæœåŠ¡å™¨ï¼Œé—®å®ƒå¦‚æžœè¦è¿”å›žï¼Œä¼šè¿”å›žå“ªä¸ªç‰ˆæœ¬çš„å†…å®¹ï¼Œå¹¶ä¸Žæœ¬åœ°å¯¹æ¯”
-	- It is "fresh enough". In the default case, this means it meets the least restrictive freshness requirement of the client, origin server, and cache éœ€è¦æœ€æ–°çš„é‚£ä¸ªç‰ˆæœ¬çš„æ•°æ®
+		- It has been checked for equivalence with what the origin server would have returned by revalidating the response with the origin server 发送请求给源服务器，问它如果要返回，会返回哪个版本的内容，并与本地对比
+	- It is "fresh enough". In the default case, this means it meets the least restrictive freshness requirement of the client, origin server, and cache 需要最新的那个版本的数据
 	- It is an appropriate 304 (Not Modified), 305 (Proxy Redirect), or error (4xx or 5xx) response message 
-	- expiration model è¿‡æœŸæ¨¡åž‹
-		- server-specified expiration æœåŠ¡ç«¯æŒ‡å®šè¿‡æœŸæ—¶é—´ï¼šCache-Control: no-cache; Cache-Control: max-age=60
-		- heuristic expiration å¯å‘å¼ç¼“å­˜
+	- expiration model 过期模型
+		- server-specified expiration 服务端指定过期时间：Cache-Control: no-cache; Cache-Control: max-age=60
+		- heuristic expiration 启发式缓存
 	- validation model
-		- When a cache has a staleé™ˆè…çš„ entry that it would like to use as a response to a clients request, it first has to check with the origin server (or possibly an intermediate cache with a fresh response) to see if its cached entry is still usable å…ˆå‘é€ä¸€ä¸ªå°å¼€é”€çš„è¯·æ±‚è¯¢é—®å½“å‰ç‰ˆæœ¬çš„ç¼“å­˜æ˜¯å¦å¯ç”¨ï¼Œå¯ç”¨åˆ™å¯èŠ‚çœå¼€é”€ï¼Œä¸å¯ç”¨åˆ™å¤šä¸€ä¸ªRTTçš„å¼€é”€
+		- When a cache has a stale陈腐的 entry that it would like to use as a response to a clients request, it first has to check with the origin server (or possibly an intermediate cache with a fresh response) to see if its cached entry is still usable 先发送一个小开销的请求询问当前版本的缓存是否可用，可用则可节省开销，不可用则多一个RTT的开销
 		- No overhead of re-transmitting the whole response when the entry is valid, but incurs overhead in RTT.
-		- æ„Ÿè§‰å°±è€ƒå‰é¢çš„ï¼Œä¸»è¦æ˜¯è¿‡æœŸæ¨¡åž‹çš„åŽŸç†
+		- 感觉就考前面的，主要是过期模型的原理
 		- last-modified dates:
 		- entiry tage cache validators: Entity tags are used for comparing two or more entities from the same requested resource
 		- requestor side:
@@ -45,12 +44,12 @@ total = 2RTT+transmit time
 ---
 ## week 2 HTML & CSS
 - HTML 5
-	- syntax: å¯ä»¥åµŒå¥—(nested)ï¼Œä¸å¯ä»¥äº¤å‰(cross)
+	- syntax: 可以嵌套(nested)，不可以交叉(cross)
 	- structure: <html><head>...</head><body>...</body></html>
 	- quick tour: 
 		- link: 
 			```<a href="javascript:doSomething()"></a>```
-		- list: ä¸¤è€…å¯ä»¥äº’ç›¸åµŒå¥—
+		- list: 两者可以互相嵌套
 			```
 			//unordered list
 			<ul>
@@ -71,46 +70,46 @@ total = 2RTT+transmit time
 	- relative vs absolute measurement 
 	- inline: <span style="color: red">(important)</span>
 		- ```<h1 style="font-family:console; color:red">hello world</h1>```
-		- åœ¨htmlä¸­çš„å®žä¾‹ï¼š<h1 style="font-family:console; color:red">hello world</h1>
+		- 在html中的实例：<h1 style="font-family:console; color:red">hello world</h1>
 	- external: <span style="color: red">(important)</span>
 		- ```<link href="path/style.css" rel="stylesheet">```
 	- browser has a default set of rules, user style sheet can overwrite default css.
 	- cascading (principle to resolve conflicting style rules)
-		- inheritance ç»§æ‰¿
-			- å­æ ‡ç­¾ç»§æ‰¿çˆ¶æ ‡ç­¾çš„å±žæ€§
-		- specificity ç‰¹å¼‚æ€§
-			- å­å±žæ€§overrideçˆ¶å±žæ€§
-		- location å®šä½
-			- å¦‚æžœç»§æ‰¿å±žæ€§å’Œç‰¹å¼‚å±žæ€§æ²¡æœ‰æŒ‡å®šä¼˜å…ˆçº§æ—¶ï¼Œå°±è¿‘åŽŸåˆ™ï¼Œè°è¿‘ç”¨è°
+		- inheritance 继承
+			- 子标签继承父标签的属性
+		- specificity 特异性
+			- 子属性override父属性
+		- location 定位
+			- 如果继承属性和特异属性没有指定优先级时，就近原则，谁近用谁
 	- selector
 		- grouped selector
 		- class selector
 		- id selector
 		- pseudo selector
 		- contextual selector
-	- box model ä¸‡ç‰©çš†ç›’ (every element in web design is a rectangular box)<span style="color: red">(important)</span>
+	- box model 万物皆盒 (every element in web design is a rectangular box)<span style="color: red">(important)</span>
 		![box](./img2/box-model.svg)
 		- background: ```repeat, no-repeat, repeat-y, repeat-x```
-		- margin/padding å‚æ•°ä¸ªæ•°åˆ†åˆ«ä¸º1, 2, 3, 4æ—¶: 
-			- 4: ä¾æ¬¡ä¸Šå³ä¸‹å·¦ top-right-bottom-left é¡ºæ—¶é’ˆ
-			- 3: ä¾æ¬¡ä¸Šï¼Œå·¦å³ï¼Œä¸‹
-			- 2: ä¾æ¬¡ä¸Šä¸‹ï¼Œå·¦å³
-			- 1: ä¸Šä¸‹å·¦å³
+		- margin/padding 参数个数分别为1, 2, 3, 4时: 
+			- 4: 依次上右下左 top-right-bottom-left 顺时针
+			- 3: 依次上，左右，下
+			- 2: 依次上下，左右
+			- 1: 上下左右
 		- collapsing margin
-			- å½“ä¸¤ä¸ªæˆ–æ›´å¤šä¸ªåž‚ç›´è¾¹è·ç›¸é‡æ—¶ï¼Œ å®ƒä»¬å°†å½¢æˆä¸€ä¸ªå¤–è¾¹è·ã€‚è¿™ä¸ªå¤–è¾¹è·çš„é«˜åº¦ç­‰äºŽä¸¤ä¸ªå‘ç”Ÿå åŠ çš„å¤–è¾¹è·çš„é«˜åº¦ä¸­çš„è¾ƒå¤§è€…ã€‚ä½†æ˜¯æ³¨æ„åªæœ‰æ™®é€šæ–‡æ¡£æµä¸­å—æ¡†çš„åž‚ç›´å¤–è¾¹è·æ‰ä¼šå‘ç”Ÿå¤–è¾¹è·å åŠ ã€‚ è¡Œå†…æ¡†ã€ æµ®åŠ¨æ¡†æˆ–ç»å¯¹å®šä½æ¡†ä¹‹é—´çš„å¤–è¾¹è·ä¸ä¼šå åŠ ã€‚ä¸€èˆ¬æ¥è¯´ï¼Œ åž‚ç›´å¤–è¾¹è·å åŠ æœ‰ä¸‰ç§æƒ…å†µï¼š
-				- å…ƒç´ è‡ªèº«å åŠ  å½“å…ƒç´ æ²¡æœ‰å†…å®¹ï¼ˆå³ç©ºå…ƒç´ ï¼‰ã€å†…è¾¹è·ã€è¾¹æ¡†æ—¶ï¼Œ å®ƒçš„ä¸Šä¸‹è¾¹è·å°±ç›¸é‡äº†ï¼Œ å³ä¼šäº§ç”Ÿå åŠ ï¼ˆåž‚ç›´æ–¹å‘ï¼‰ã€‚ å½“ä¸ºå…ƒç´ æ·»åŠ å†…å®¹ã€ å†…è¾¹è·ã€ è¾¹æ¡†ä»»ä½•ä¸€é¡¹ï¼Œ å°±ä¼šå–æ¶ˆå åŠ ã€‚
-				- ç›¸é‚»å…ƒç´ å åŠ  ç›¸é‚»çš„ä¸¤ä¸ªå…ƒç´ ï¼Œ å¦‚æžœå®ƒä»¬çš„ä¸Šä¸‹è¾¹è·ç›¸é‡ï¼Œå³ä¼šäº§ç”Ÿå åŠ ã€‚
-				- åŒ…å«ï¼ˆçˆ¶å­ï¼‰å…ƒç´ å åŠ  åŒ…å«å…ƒç´ çš„å¤–è¾¹è·éš”ç€ çˆ¶å…ƒç´ çš„å†…è¾¹è·å’Œè¾¹æ¡†ï¼Œ å½“è¿™ä¸¤é¡¹éƒ½ä¸å­˜åœ¨çš„æ—¶å€™ï¼Œ çˆ¶å­å…ƒç´ åž‚ç›´å¤–è¾¹è·ç›¸é‚»ï¼Œ äº§ç”Ÿå åŠ ã€‚ æ·»åŠ ä»»ä½•ä¸€é¡¹å³ä¼šå–æ¶ˆå åŠ ã€‚
+			- 当两个或更多个垂直边距相遇时， 它们将形成一个外边距。这个外边距的高度等于两个发生叠加的外边距的高度中的较大者。但是注意只有普通文档流中块框的垂直外边距才会发生外边距叠加。 行内框、 浮动框或绝对定位框之间的外边距不会叠加。一般来说， 垂直外边距叠加有三种情况：
+				- 元素自身叠加 当元素没有内容（即空元素）、内边距、边框时， 它的上下边距就相遇了， 即会产生叠加（垂直方向）。 当为元素添加内容、 内边距、 边框任何一项， 就会取消叠加。
+				- 相邻元素叠加 相邻的两个元素， 如果它们的上下边距相遇，即会产生叠加。
+				- 包含（父子）元素叠加 包含元素的外边距隔着 父元素的内边距和边框， 当这两项都不存在的时候， 父子元素垂直外边距相邻， 产生叠加。 添加任何一项即会取消叠加。
 	- text styling:
-		- font-family: ä¾æ¬¡é€‰æ‹©ï¼Œå‰ä¸€é¡¹ä¸å¯ç”¨åˆ™ä½¿ç”¨åŽä¸€é¡¹  
+		- font-family: 依次选择，前一项不可用则使用后一项  
 		```p {font-family: Cambria, Georgia, "Times New Roman", serif;}```
-		- size: ```em``` å±žæ€§ï¼ŒæŒ‡elementï¼Œrelative sizeï¼ŒæŒ‡ç›¸å¯¹è¯¥å…ƒç´ çš„å¤§å°(40%, 100%, 200%)  
-		```rem``` å±žæ€§: 1rem=16px, pxè·Ÿè®¾å¤‡å’Œcssæœ‰å…³
+		- size: ```em``` 属性，指element，relative size，指相对该元素的大小(40%, 100%, 200%)  
+		```rem``` 属性: 1rem=16px, px跟设备和css有关
 ---
 ## week 3 table/form and js <span style="color: red">(important)</span>
 ### table
-- å®Œæ•´tableä»£ç åŠç¤ºä¾‹
-	- ä»£ç 
+- 完整table代码及示例
+	- 代码
 	```
 	<table border="1" cellpadding="10">
 		<caption>19th century french paintings</caption>
@@ -147,7 +146,7 @@ total = 2RTT+transmit time
 		</tbody>
 	</table>
 	```
-	- ç¤ºä¾‹
+	- 示例
 	<table border="1" cellpadding="10">
 		<caption>19th century french paintings</caption>
 		<col class="artistName"/>
@@ -187,8 +186,8 @@ total = 2RTT+transmit time
 	- ```tbody tr: nth-child(odd){background-color: white;}```
 
 ### form (interact with web server)
-- formä»£ç åŠå®žä¾‹ï¼š
-	- ä»£ç 
+- form代码及实例：
+	- 代码
 	```
 	<form method="get" action="process.php">
 		<fieldset>
@@ -209,7 +208,7 @@ total = 2RTT+transmit time
 		</fieldset>
 	</form>
 	```
-	- form å®žä¾‹ï¼š
+	- form 实例：
 	<form method="get" action="">
 		<fieldset>
 			<legend>Details</legend>
@@ -228,9 +227,9 @@ total = 2RTT+transmit time
 			<input type="submit">
 		</fieldset>
 	</form>
-- form ä¸­çš„å…ƒç´ : button, datalist, fieldset, form, input, label, legend, option, optgroup, select, textarea
-- input çš„ç±»åž‹: text, textarea, password, search, email, tel, url, button, number, range, checkbox, radio, color, date, time, datetime, datetime-local
-- selectå“ªä¸ªå€¼è¢«å‘é€:   
+- form 中的元素: button, datalist, fieldset, form, input, label, legend, option, optgroup, select, textarea
+- input 的类型: text, textarea, password, search, email, tel, url, button, number, range, checkbox, radio, color, date, time, datetime, datetime-local
+- select哪个值被发送:   
 	```
 	<select name="choice">
 		<option>second</option>
@@ -276,7 +275,7 @@ var person = {
 	- complex: object, array, function
 	- array: ```var greetings = ["good morning", "good afternoon"]
 	- scope: local & global
-	- è¾“å‡º: alert(), console.log(), document.write()ç›´æŽ¥è¾“å‡ºåˆ°html
+	- 输出: alert(), console.log(), document.write()直接输出到html
 #### windows and DOM object
 - js objects:
 	- build-in objects for common processing: string, date, math, etc.
@@ -309,18 +308,18 @@ var person = {
 		- commentTag.className = "someClassName"
 		
 #### event model
-- ä¸¤ä¸ªè§¦å‘å™¨è®¾ç½® registering event handler
+- 两个触发器设置 registering event handler
 	1. element.onclick = functionName;  
-	å˜ä½“: element.onclick = function(...){...};
+	变体: element.onclick = function(...){...};
 	2. element.addEventListener('click', functionName);  
-	å˜ä½“: element.addEventListener('click', function(...){...});
+	变体: element.addEventListener('click', function(...){...});
 - window.onload = function(){//js code here};
 - event obj and this
 	```
 	document.getElementById("loginFrom").onsubmit = function(e){
-		var fieldValue = document.getElementById("username").value; //valueä¸éœ€è¦æ‹¬å·
+		var fieldValue = document.getElementById("username").value; //value不需要括号
 		if(fieldValue == null || fieldValue == ""){
-			e.preventDefault(); //eæ˜¯è§¦å‘å™¨ï¼ŒpreventDefaultæ˜¯ç¦æ­¢è¯¥å¯¹è±¡çš„é»˜è®¤æ“ä½œ
+			e.preventDefault(); //e是触发器，preventDefault是禁止该对象的默认操作
 			alert("you must enter a username");
 		}
 	}
@@ -333,5 +332,5 @@ var person = {
 
 
 
-ä¸­é—´ä»¶ w6 p28
+中间件 w6 p28
 
