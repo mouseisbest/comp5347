@@ -474,4 +474,16 @@ var person = {
 		- A place to store credential info: (username/password, security questions/answers)->(memory, file, DB, LDAP)
 		- A way for user to retrieve or reset their credentials
 	- Local Implementation of Authorization (role based)
-		- 
+		- A place to store the mapping between user and role (memory, file, DB, LDAP)
+		- A way to specify which role(s) can take which action(s) on which resources
+			- Most of the resources are expressed as URL or directory structure as used in REST API
+			- Actions can be application defined, or use HTTP methods
+	- 3rd party Authentication
+		- Authentication can be delegated to third party
+		- OpenID: 3rd authentication scheme is popluar and used under many major websites
+			- developers do not need to implement the standard function again and again.
+			- OpenID providers have better mechanisms to protect credentials
+			- Users do not need to memorize multiple pair of username/password
+		- OpenID was motivated by the requirement to have a unified identity for online users
+		
+
