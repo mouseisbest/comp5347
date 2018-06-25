@@ -461,29 +461,36 @@ var person = {
 		- Way to encrypt message (request, response): HTTPS
 		- Way to identify client/server: digital certificate
 ### Authentication & Authorization
-	- Local implementation
-		- Authentication factors are the things you can ask someone for in an effort to validate that they are who they claim to be.
-		- You know (knowledge): password, PIN, security questions
-		- You have (ownership): access card, phone
-		- You are (inherence): retinas, fingerprints, DNA
-		- Most websites use single factor (password) based authentication method.
-		- Security question ususally for password retrieval.
-		- A few websites require both password and security question or SMS code for login.
-	- Implementation of Authentication
-		- A way (e.g. webpage) to allow users to sign up and by supplying their credentials
-		- A place to store credential info: (username/password, security questions/answers)->(memory, file, DB, LDAP)
-		- A way for user to retrieve or reset their credentials
-	- Local Implementation of Authorization (role based)
-		- A place to store the mapping between user and role (memory, file, DB, LDAP)
-		- A way to specify which role(s) can take which action(s) on which resources
-			- Most of the resources are expressed as URL or directory structure as used in REST API
-			- Actions can be application defined, or use HTTP methods
-	- 3rd party Authentication
-		- Authentication can be delegated to third party
-		- OpenID: 3rd authentication scheme is popluar and used under many major websites
-			- developers do not need to implement the standard function again and again.
-			- OpenID providers have better mechanisms to protect credentials
-			- Users do not need to memorize multiple pair of username/password
-		- OpenID was motivated by the requirement to have a unified identity for online users
-		
+- Local implementation
+	- Authentication factors are the things you can ask someone for in an effort to validate that they are who they claim to be.
+	- You know (knowledge): password, PIN, security questions
+	- You have (ownership): access card, phone
+	- You are (inherence): retinas, fingerprints, DNA
+	- Most websites use single factor (password) based authentication method.
+	- Security question ususally for password retrieval.
+	- A few websites require both password and security question or SMS code for login.
+- Implementation of Authentication
+	- A way (e.g. webpage) to allow users to sign up and by supplying their credentials
+	- A place to store credential info: (username/password, security questions/answers)->(memory, file, DB, LDAP)
+	- A way for user to retrieve or reset their credentials
+- Local Implementation of Authorization (role based)
+	- A place to store the mapping between user and role (memory, file, DB, LDAP)
+	- A way to specify which role(s) can take which action(s) on which resources
+		- Most of the resources are expressed as URL or directory structure as used in REST API
+		- Actions can be application defined, or use HTTP methods
+- 3rd party Authentication
+	- Authentication can be delegated to third party
+	- OpenID: 3rd authentication scheme is popluar and used under many major websites
+		- developers do not need to implement the standard function again and again.
+		- OpenID providers have better mechanisms to protect credentials
+		- Users do not need to memorize multiple pair of username/password
+	- OpenID was motivated by the requirement to have a unified identity for online users
+	- Open Authorization roles:
+		- Resource owner: end user who can gain access to resource
+		- Resource server: host the resources and process requests using access tokens
+		- Client: application making requests on behalf of the resource owener
+		- Authentication server: issues tokens to the client upon identified owener.
+- Cryptography:
+	- Early cipher attempt: Vigenère cipher
+		-
 
