@@ -861,7 +861,7 @@ var person = {
 - view: presentation of the model in a particular format
 - controller: responsible for responding to the user input and perform interactions on the data model objects. The controller receives the input, optionally validates the input and then passes the input to the model
 - General structure
-![MVC structure](./img2/MVC_structure.gif)
+![MVC structure](./img2/mvcpattern.png)
 
 
 
