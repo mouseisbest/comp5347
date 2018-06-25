@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 押题
 ---
 ## week 1 how web works
@@ -861,7 +860,7 @@ var person = {
 - view: presentation of the model in a particular format
 - controller: responsible for responding to the user input and perform interactions on the data model objects. The controller receives the input, optionally validates the input and then passes the input to the model
 - General structure
-![MVC structure](./img2/MVC_structure.gif)
+![MVC structure](./img2/MVCpattern.png)
 
 
 
@@ -896,4 +895,3 @@ var person = {
 		- Maintain the privacy for data you are storing & transferring 
 	- Data integrity:
 		- Data is accurate & correct
->>>>>>> dbeb74e4f096443bbd70e005fd87599bb1cb3574
