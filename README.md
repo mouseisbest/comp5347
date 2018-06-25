@@ -12,7 +12,7 @@ one RTT for HTTP request and first few bytes of HTTP response to return
 file transmission time
 total = 2RTT+transmit time
 - TTFB: time to first byte: one RTT plus server processing time.
-- persistent HTTP: HTTP 长连接， 1.1默认
+- persistent HTTP: HTTP 长连接， 1.1默认 (HTTP/1.1 默认HTTP pipeline, 一次发三个req, 收三个res)
 - caching in HTTP <span style="color: red">(important)</span>
 	```
 	- goal of caching:
@@ -361,6 +361,80 @@ var person = {
         ![case3](./img2/case3.jpg)
 ---
 ## week5 server development
+### review of browser
+- HTTP/1.1 pipeline -> parallel connection: to improve performance
+    - without pipeline: serializing 序列化的，发一个req，收一个res
+    - pipeline: browser open several connections to each domain sending parallel requests
+
+### how web browser works
+- 以下概念看一眼就好
+    - server-side development: Server-side development involves the use of programming technology to create script that dynamically generate content
+    - Server-side script: software running on a server and uses HTTP request-response loop for interaction with the clients
+    - common server type:
+        - web servers:
+        - application servers:
+        - database server:
+        - web server must choose an application stack for dynamic requests: OS/web server software/database/script language
+        - server software should be installed and configured appropriately on the server
+    - url
+    ```
+    http://www.funwebdev.com/index.php?page=17#article
+        - http: protocal
+        - www.funwebdev.com/: domain
+        - index.php: path
+        - ?page=17: query string
+        - '#article': fragment 在页面中的位置的标识符
+    ```
+    - headers (讲道理header可能会出考题，大概率选择)
+        - Request headers: include data about the client machine.
+        - Response headers: have information about the server answering the request and the data being sent
+    - Address resolution rely on URL path and file extension
+    - steps to processing request:
+        - Parse HTTP request to obtain various information carried in the request
+        - Do some processing based on the HTTP request information
+        - Generate response
+- JSP
+    - URL encoding: URLEncode转义
+    - GET vs POST
+        -GET:
+            - Data can be clearly seen in the address bar.
+            - Data remains in browser history and cache.
+            - Data can be bookmarked
+            - Limit on the number of characters in the form data returned
+        - POST:
+            - Data can contain binary data.
+            - Data is hidden from user.
+            - Submitted data is not stored in cache, history, or bookmarks
+        - implication 含义
+            - GET is meant to be used to **query** something from the server **without changing** any server data
+            - POST is meant to be used for sending data to be processed and **change something** on the server
+        - case:
+            - HTTP POST
+                - POST week2/sayHello HTTP/1.1
+                - clientName= Jo
+            - HTTP GET
+                - GET week2/sayHello?clientName=Jo HTTP/1.1
+    - JSP takes the “template processing” approach
+- MVC <span style="color: red">(important)</span>
+![MVC](./img2/MVC.svg)
+- model: responsible for managing the data of the application. It receives user input from the controller
+- view: presentation of the model in a particular format
+- controller: responsible for responding to the user input and perform interactions on the data model objects. The controller receives the input, optionally validates the input and then passes the input to the model
+- General structure
+![MVC structure](./img2/MVC_structure.gif)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 中间件 w6 p28
