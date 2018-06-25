@@ -314,7 +314,7 @@ var person = {
 	2. element.addEventListener('click', functionName);  
 	变体: element.addEventListener('click', function(...){...});
 - window.onload = function(){//js code here};
-- event obj and this
+- event object and this
 	```
 	document.getElementById("loginFrom").onsubmit = function(e){
 		var fieldValue = document.getElementById("username").value; //value不需要括号
@@ -325,8 +325,13 @@ var person = {
 	}
 	```
 ---
-
-
+## week4 browser performance
+### js review
+- 2 ways to pass arguments
+	- pass-by-value: 创建一个变量的副本，并传给调用它的函数
+	- pass-by-reference: 直接将被调用的数据的访问权限给调用函数，调用函数可以直接修改数据
+- 变量与闭包closure
+	- 
 
 
 
