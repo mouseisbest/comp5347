@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 押题
 ---
 ## week 1 how web works
@@ -436,6 +435,7 @@ var person = {
 ### express.js
 
 
+<<<<<<< HEAD
 中间件 w6 p28
 =======
 # 押题
@@ -896,4 +896,3 @@ var person = {
 		- Maintain the privacy for data you are storing & transferring 
 	- Data integrity:
 		- Data is accurate & correct
->>>>>>> dbeb74e4f096443bbd70e005fd87599bb1cb3574
