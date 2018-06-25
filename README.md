@@ -6,15 +6,15 @@
 - request methods: HTTP/1.0(GET, POST, HEAD) & HTTP/1.1(GET, POST, HEAD, PUT, DELETE)
 - HTTP Response status code: 1XX, 2XX, 3XX, 4XX, 5Xx
 - RTT: time to send a small packet to travel from client to server and back.
-- –	Response time:  
-one RTT to initiate TCP connection  
-one RTT for HTTP request and first few bytes of HTTP response to return  
-file transmission time  
-total = 2RTT+transmit time  
+- –	Response time:
+one RTT to initiate TCP connection
+one RTT for HTTP request and first few bytes of HTTP response to return
+file transmission time
+total = 2RTT+transmit time
 - TTFB: time to first byte: one RTT plus server processing time.
 - persistent HTTP: HTTP 长连接， 1.1默认
 - caching in HTTP <span style="color: red">(important)</span>
-	``` 
+	```
 	- goal of caching:
 		- Eliminate the need to send requests in many cases
 			- reduce the number of network round-trips required for many operations
@@ -23,10 +23,10 @@ total = 2RTT+transmit time
 			- reduce network bandwidth requirements
 			- a "calidation" mechanism
 	- level of caches: server side, client side (proxy and browser)
-	- cache correctness: 
+	- cache correctness:
 		- It has been checked for equivalence with what the origin server would have returned by revalidating the response with the origin server 发送请求给源服务器，问它如果要返回，会返回哪个版本的内容，并与本地对比
 	- It is "fresh enough". In the default case, this means it meets the least restrictive freshness requirement of the client, origin server, and cache 需要最新的那个版本的数据
-	- It is an appropriate 304 (Not Modified), 305 (Proxy Redirect), or error (4xx or 5xx) response message 
+	- It is an appropriate 304 (Not Modified), 305 (Proxy Redirect), or error (4xx or 5xx) response message
 	- expiration model 过期模型
 		- server-specified expiration 服务端指定过期时间：Cache-Control: no-cache; Cache-Control: max-age=60
 		- heuristic expiration 启发式缓存
@@ -46,8 +46,8 @@ total = 2RTT+transmit time
 - HTML 5
 	- syntax: 可以嵌套(nested)，不可以交叉(cross)
 	- structure: <html><head>...</head><body>...</body></html>
-	- quick tour: 
-		- link: 
+	- quick tour:
+		- link:
 			```<a href="javascript:doSomething()"></a>```
 		- list: 两者可以互相嵌套
 			```
@@ -67,7 +67,7 @@ total = 2RTT+transmit time
 		- ```<nac>``` navigation
 - CSS: cascading style sheets
 	- ```selector {declaration, declaration}``` , each declaration: ```property:value```
-	- relative vs absolute measurement 
+	- relative vs absolute measurement
 	- inline: <span style="color: red">(important)</span>
 		- ```<h1 style="font-family:console; color:red">hello world</h1>```
 		- 在html中的实例：<h1 style="font-family:console; color:red">hello world</h1>
@@ -90,7 +90,7 @@ total = 2RTT+transmit time
 	- box model 万物皆盒 (every element in web design is a rectangular box)<span style="color: red">(important)</span>
 		![box](./img2/box-model.svg)
 		- background: ```repeat, no-repeat, repeat-y, repeat-x```
-		- margin/padding 参数个数分别为1, 2, 3, 4时: 
+		- margin/padding 参数个数分别为1, 2, 3, 4时:
 			- 4: 依次上右下左 top-right-bottom-left 顺时针
 			- 3: 依次上，左右，下
 			- 2: 依次上下，左右
@@ -100,10 +100,11 @@ total = 2RTT+transmit time
 				- 元素自身叠加 当元素没有内容（即空元素）、内边距、边框时， 它的上下边距就相遇了， 即会产生叠加（垂直方向）。 当为元素添加内容、 内边距、 边框任何一项， 就会取消叠加。
 				- 相邻元素叠加 相邻的两个元素， 如果它们的上下边距相遇，即会产生叠加。
 				- 包含（父子）元素叠加 包含元素的外边距隔着 父元素的内边距和边框， 当这两项都不存在的时候， 父子元素垂直外边距相邻， 产生叠加。 添加任何一项即会取消叠加。
+	    - 对于上下两个并列的div块而言，上面div的margin-bottom和下面div的margin-top会塌陷，也就是会取上下两者margin里最大值作为显示值，所以从这个意义上说：CSS及浏览器的设计者们希望我们在布局时，如果遇到上下两个并排内容块的安排，最好只设置其中每个块上或下margin的一处即可。
 	- text styling:
-		- font-family: 依次选择，前一项不可用则使用后一项  
+		- font-family: 依次选择，前一项不可用则使用后一项
 		```p {font-family: Cambria, Georgia, "Times New Roman", serif;}```
-		- size: ```em``` 属性，指element，relative size，指相对该元素的大小(40%, 100%, 200%)  
+		- size: ```em``` 属性，指element，relative size，指相对该元素的大小(40%, 100%, 200%)
 		```rem``` 属性: 1rem=16px, px跟设备和css有关
 ---
 ## week 3 table/form and js <span style="color: red">(important)</span>
@@ -118,7 +119,7 @@ total = 2RTT+transmit time
 			<col />
 			<col />
 		</colgroup>
-		
+
 		<thead>
 			<tr>
 				<th>Title</th>
@@ -154,7 +155,7 @@ total = 2RTT+transmit time
 			<col />
 			<col />
 		</colgroup>
-		
+
 		<thead>
 			<tr>
 				<th>Title</th>
@@ -229,7 +230,7 @@ total = 2RTT+transmit time
 	</form>
 - form 中的元素: button, datalist, fieldset, form, input, label, legend, option, optgroup, select, textarea
 - input 的类型: text, textarea, password, search, email, tel, url, button, number, range, checkbox, radio, color, date, time, datetime, datetime-local
-- select哪个值被发送:   
+- select哪个值被发送:
 	```
 	<select name="choice">
 		<option>second</option>
@@ -242,12 +243,12 @@ total = 2RTT+transmit time
 	//?choice=2
 	```
 ### JavaScript: object based, dynamically type scripting language
-#### local 
-- three types: 
-	- inline: 
+#### local
+- three types:
+	- inline:
 		- ```<a href="JavaScript: OpenWindow();">more info</a>```
 		- ```<input type="button" onclick="alert('r u ok?');"/>```
-	- embedded: 
+	- embedded:
 	```
 	<script>
 		alert("hello world!");
@@ -270,7 +271,7 @@ var person = {
 	}
 }
 ```
-- data type: 
+- data type:
 	- primitive: boolean, string, number, null, undefined
 	- complex: object, array, function
 	- array: ```var greetings = ["good morning", "good afternoon"]
@@ -282,7 +283,7 @@ var person = {
 	- can access browser object: window, history, location
 	- can access html element as DOM. DOM categories: core, html, style, event
 	- DOM nodes: element node, text node, attribute node
-	- node properties: 
+	- node properties:
 		- attribute
 		- childNode
 		- firstNode
@@ -306,12 +307,12 @@ var person = {
 	- modify element's style:
 		- commentTag.style.borderWidth = "3px"
 		- commentTag.className = "someClassName"
-		
+
 #### event model
 - 两个触发器设置 registering event handler
-	1. element.onclick = functionName;  
+	1. element.onclick = functionName;
 	变体: element.onclick = function(...){...};
-	2. element.addEventListener('click', functionName);  
+	2. element.addEventListener('click', functionName);
 	变体: element.addEventListener('click', function(...){...});
 - window.onload = function(){//js code here};
 - event object and this
@@ -330,10 +331,36 @@ var person = {
 - 2 ways to pass arguments
 	- pass-by-value: 创建一个变量的副本，并传给调用它的函数
 	- pass-by-reference: 直接将被调用的数据的访问权限给调用函数，调用函数可以直接修改数据
-- 变量与闭包closure: 闭包
+- 变量与闭包closure: 闭包可以将函数的内部的局部变量让全局可以访问
 
-
-
+### browser rendering process
+- critical rendering path <span style="color: red">(important)</span>
+    - 浏览器真实采用的从web服务器 接受receive 解析parse 展示display 数据的步骤 称 关键渲染路径
+    - 步骤：
+        1. process HTML elements and build the **DOM tree** (Document object model)
+        2. process CSS rules and build the **CSSOM tree** (CSS object model)
+        3. combine the DOM and CSSOM into a **render tree**
+        4. run layout on the render tree to compute geometry of each node
+        5. paint them on the screen
+    - Both HTML and CSS are render blocking resources
+    - Navigation time API
+    ![process](./img2/process.png)
+    - case: html with js, css, image
+    ![case1](./img2/CRP_css_js_img.jpg)
+    css, js, img并行加载
+    - performance pattern
+        - Critical Resource: resource that needs to be downloaded before rendering the page
+        - Critical Path Length: number of round trips to fetch all critical resources; ignore the initial tcp connection set up time
+        - Critical Bytes: total amount of bytes required get before rendering the page
+    - case:
+        1. one critical path and one round trip:
+        ![case1](./img2/case1.jpg)
+        2. two critical paths and two round trips:
+        ![case2](./img2/case2.jpg)
+        3. three critical paths and two round trips:
+        ![case3](./img2/case3.jpg)
+---
+## week5 server development
 
 
 中间件 w6 p28
