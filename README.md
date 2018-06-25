@@ -420,22 +420,19 @@ var person = {
 - model: responsible for managing the data of the application. It receives user input from the controller
 - view: presentation of the model in a particular format
 - controller: responsible for responding to the user input and perform interactions on the data model objects. The controller receives the input, optionally validates the input and then passes the input to the model
-- General structure
-![MVC structure](./img2/MVC_structure.gif)
+- General structure  
+![mvcpattern](./img2/mvcpattern.png)
+---
+## week 6 Node.js
+### general
+- Node.js server runs on a single thread, very light footprint on system resource
+- single threaded execution: 
+	- Node.js server handles all requests in a **single thread**
+	- JavaScript is designed to run in a single thread, both in browser and on server side
+- multiple theaded execution: thread pool
+### Node.js application structure
 
-
-
-
-
-
-
-
-
-
-
-
-
+### express.js
 
 
 中间件 w6 p28
-
