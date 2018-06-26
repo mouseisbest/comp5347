@@ -14,7 +14,6 @@ total = 2RTT+transmit time
 - TTFB: time to first byte: one RTT plus server processing time.
 - persistent HTTP: HTTP 长连接， 1.1默认 (HTTP/1.1 默认HTTP pipeline, 一次发三个req, 收三个res)
 - caching in HTTP <span style="color: red">(important)</span>
-	```
 	- goal of caching:
 		- Eliminate the need to send requests in many cases
 			- reduce the number of network round-trips required for many operations
@@ -40,7 +39,6 @@ total = 2RTT+transmit time
 			- if-match
 			- if-none-match
 			- if-modified-since
-	```
 ---
 ## week 2 HTML & CSS
 - HTML 5
