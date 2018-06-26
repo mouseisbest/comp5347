@@ -429,7 +429,42 @@ var person = {
 	- JavaScript is designed to run in a single thread, both in browser and on server side
 - multiple theaded execution: thread pool
 ### Node.js application structure
-
+- JS is object-based, but not a real object-oriented language. 因为语法中没有class的概念。需要把property和method封装成一个对象。
+- 本段科普，略过
+	- constructor:
+	```
+	function Cat(name,color){
+		this.name = name;
+		this.color = color;
+		this.type = "猫科动物";
+		this.eat = function(){alert("吃老鼠");};
+	}
+	```
+	- prototype:
+	```
+	function Cat(name,color){
+		this.name = name;
+		this.color = color;
+	}
+	Cat.prototype.type = "猫科动物";
+	Cat.prototype.eat = function(){alert("吃老鼠")};
+	```
+- 通过namespace来区分不同的对象和作用域
+	- ```window``` 是浏览器js的全局对象
+- module system:
+	- Each file is its own module
+	- Each file has access to the current module definition using the module variable.
+	- The export of the current module is determined by the ```module.exports``` variable.
+	- To import a module, use the globally available ```require``` function
+- node.js basic components:
+	- cosnole
+	- process
+	- require
+	- __filename and _dirname
+- handle GET and POST requests:
+	- GET: ```req.query.name```
+	- POST: ```req.body.name```
+	
 ### express.js
 
 --- week9 Client side libraries
