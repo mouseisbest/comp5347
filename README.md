@@ -435,16 +435,16 @@ var person = {
 	```
 	function Cat(name,color){
 		this.name = name;
-	　　this.color = color;
-	　　this.type = "猫科动物";
-	　　this.eat = function(){alert("吃老鼠");};
+		this.color = color;
+		this.type = "猫科动物";
+		this.eat = function(){alert("吃老鼠");};
 	}
 	```
 	- prototype:
 	```
 	function Cat(name,color){
-	　　this.name = name;
-	　　this.color = color;
+		this.name = name;
+		this.color = color;
 	}
 	Cat.prototype.type = "猫科动物";
 	Cat.prototype.eat = function(){alert("吃老鼠")};
