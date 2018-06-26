@@ -434,6 +434,28 @@ var person = {
 
 
 ---
+## week10 REST Web Services
+### Web Services
+- Definition
+	- Web services provide a simple way to integrate functions or datas from various systems.
+	- It can be both used with an organization (LAN) and/or across the public Internet (WAN).
+		- SOAP - 简单对象访问协议
+		- WSDL - 网络服务描述语言
+		- UDDI - Universal Description, Discovery and Integration
+		- 原始web service设计： application centric; Web and REST style:  resource centric
+- REST : Representational State Transfer
+	- REST-style architectures consist of clients and servers. 
+	- Clients initiate requests to servers; servers process requests and return appropriate responses.
+	- Resource：资源，即数据（前面说过网络的核心）。比如 newsfeed，friends等； Representation：某种表现形式，比如用JSON，XML，JPEG等；
+	- State Transfer：状态变化。通过HTTP动词实现。
+	- 早期REST API格式： ```https://en.wikipedia.org/w/api.php?action=query&name=value```
+	- 现在的格式： URL+基本操作（GET, POST, PUT, DELETE）
+	- REST  设计原则：
+		- 显式使用HTTP methods
+		- 无状态
+		- 类似目录的结构
+		
+---
 ## week11 Security
 ### General security concerns
 - Threats exist in different forms
@@ -539,7 +561,7 @@ var person = {
 	- Input sanitization
 		- remove undesirable input rather than reject whole input
 - Output encoding
-	- Unescaped: <script> alert(“hello”);</script>
+	- Unescaped: ```<script> alert(“hello”);</script>```
 	- Escaped: ```&lt;script&gt;alert(&quot;hello&quot;);&lt;/script&gt;```
 		
 		
