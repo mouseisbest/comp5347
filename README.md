@@ -430,24 +430,25 @@ var person = {
 - multiple theaded execution: thread pool
 ### Node.js application structure
 - JS is object-based, but not a real object-oriented language. 因为语法中没有class的概念。需要把property和method封装成一个对象。
-- constructor:  (本段科普，略过)
-```
-function Cat(name,color){
-	this.name = name;
-　　this.color = color;
-　　this.type = "猫科动物";
-　　this.eat = function(){alert("吃老鼠");};
-}
-```
-- prototype:
-```
-function Cat(name,color){
-　　this.name = name;
-　　this.color = color;
-}
-Cat.prototype.type = "猫科动物";
-Cat.prototype.eat = function(){alert("吃老鼠")};
-```
+- 本段科普，略过
+	- constructor:
+	```
+	function Cat(name,color){
+		this.name = name;
+	　　this.color = color;
+	　　this.type = "猫科动物";
+	　　this.eat = function(){alert("吃老鼠");};
+	}
+	```
+	- prototype:
+	```
+	function Cat(name,color){
+	　　this.name = name;
+	　　this.color = color;
+	}
+	Cat.prototype.type = "猫科动物";
+	Cat.prototype.eat = function(){alert("吃老鼠")};
+	```
 - 通过namespace来区分不同的对象和作用域
 	- ```window``` 是浏览器js的全局对象
 - module system:
