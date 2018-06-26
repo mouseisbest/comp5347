@@ -465,6 +465,7 @@ var person = {
 	- 首先要执行URL Parse才有后面两个
 	- GET: ```req.query.name```
 	- POST: ```req.body.name```
+<<<<<<< HEAD
 ### express.js basics
 - routing: MVC pattern
 	- Express is a popular framework for building MVC node.js application
@@ -532,6 +533,12 @@ var person = {
 - MongoDB 参考 [MongoDB](./mongodb.md)
 ---
 ## week 8 
+=======
+	
+### express.js
+
+--- week9 Client side libraries
+>>>>>>> 6e0c02903dd408421e173126b3b42b92076d6acc
 ---
 ## week10 REST Web Services
 ### Web Services
@@ -553,7 +560,7 @@ var person = {
 		- 显式使用HTTP methods
 		- 无状态
 		- 类似目录的结构
-		
+	-看Url就知道要什么;看http method就知道干什么;看http status code就知道结果如何
 ---
 ## week11 Security
 ### General security concerns
