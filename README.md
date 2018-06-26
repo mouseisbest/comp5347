@@ -533,12 +533,12 @@ var person = {
 - MongoDB 参考 [MongoDB](./mongodb.md)
 ---
 ## week 8 
-=======
+---
 	
 ### express.js
 
---- week9 Client side libraries
->>>>>>> 6e0c02903dd408421e173126b3b42b92076d6acc
+--- 
+week9 Client side libraries
 ---
 ## week10 REST Web Services
 ### Web Services
