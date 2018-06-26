@@ -462,12 +462,76 @@ var person = {
 	- require
 	- __filename and _dirname
 - handle GET and POST requests:
+	- 首先要执行URL Parse才有后面两个
 	- GET: ```req.query.name```
 	- POST: ```req.body.name```
-	
-### express.js
-
-
+### express.js basics
+- routing: MVC pattern
+	- Express is a popular framework for building MVC node.js application
+	- express封装了: server setup, Routing URL to code,use template engines to convert template files into proper response HTML, remembering visitors for session support
+	- routing: mapping between HTTP request (method, url) to the piece of code handling the request
+		- structure: ```app.METHOD(PATH, HANDLER)```  ()
+			- ```app```是一个express实例
+			- ```METHOD```是一个HTTP请求方法(GET, POST), 小写!
+			- ```PATH```是URL上的路径
+			- ```HANDLER```是处理这个请求的方法
+- middleware: software (function) that sits between the application code and some low level API
+	- It has access to the request and response object
+	- ```app.get('/', function(req, res, next){next();});``` 
+	- ```app.use('/', route);``` Route method is also a middleware, most of the time we call it route method or handler.
+	- ```app.use(bodyParser.json()); app.use(bodyParser.urlencoded({extended: true}));```
+	- middleware can do: Execute any code, Make changes to request or response object, End the request-response cycle, Call next in the stack, middleware or route method.
+- template engnies
+	- Template engine represents the view technology
+	- EJS(support JS in HTML), PUG
+	- embedded js template: ```<% %>```: control flow; ```<%= user.name%>```: Escaped output (expression)
+	- sample:
+		- ```app.set('views', path.join(__dirname,'views'));``` //设定URL的```abc.com/views```链接到工作目录下的```/home/usr/app/view```路径
+		- By using use ‘__dirname’, we make sure that the path is always relative to the current file instead of the current working directory (CWD).
+---
+## week 7 MVC + MongoDB
+- MVC in Express:
+	- in server.js: ```var route = require('../routes/survey.server.routes'); app.use('/survey', survey);```
+	- in router: ```var route = express.Router(); route.get('/', controller.doSomething);```
+	- 由model来访问数据库: 数据库连接，schema，controller里调用，具体的语句尤其是aggregate
+- session management
+	- scope: session: across related requests.
+	- mechanism to associate a series of requests coming from a client.
+	- how session works: (读一下)
+		- Client sends the first request
+		- The server creates an ID for the client and a session object to store session data, the ID is associated with the object
+			- A server can maintain many sessions simultaneously hence multiple session objects, each with an ID to identify it
+		- The server executes predefined business logic for that request and sends back the response together with the ID to the client
+		- The client stores the ID and associates it with the server
+			- A client may maintain many sessions with different servers simultaneously, hence it is important to remember which ID belongs to which server
+		- When the client sends a second request to this server, it attaches the ID with the request
+		- The server extracts the ID and use it to find the session data associated with this particular client and make it available to the current request
+	- How can server remembers client state?  (读一下)
+		- An object to hold conversational state across multiple requests from the same client identified by a key or ID.
+		- It stays for an entire session with a specific client
+		- We can use it to store everything about a particular client.
+		- Stay in memory mostly but can be persisted in a database
+	- Where does clients stores the ID?  (读一下)
+		- A cookie is a small piece of information stored on a client’s computer by the browser
+		- Each browser has its own way to store cookies either in a text file or in a lightweight database
+		- Each browser manages its own cookies.
+		- Since a browser stores cookies from various websites, it also needs a way to identify cookie for a particular site.
+		- Cookies are identified by {name, domain, path}
+	- Browser would associate/send all cookies in the URL scope: cookie-domain is domain-suffix of URL-domain, and cookie-path is prefix of URL-path
+	- express-session: ```app.use(session({secret:'ssshhhhh', cookie:{maxAge: 5*60*10000}, resave: true, saveUninitialized: true}));```; ```req.session```
+- DB layer (MongoDB)
+	- Key-Value Storage
+	- example:
+		```
+		Invoice _1= {    customer: {name: “John”, address: “Sydney”},
+			product: { code: “123”, quantity: 2}}
+		```
+	- MongoDB
+		- Primitive types: String, integer, boolean (true/false), double, null
+		- Predefined special types: Date, object id, binary data, regular expression, timestamp...
+- MongoDB 参考 [MongoDB](./mongodb.md)
+---
+## week 8 
 ---
 ## week10 REST Web Services
 ### Web Services
