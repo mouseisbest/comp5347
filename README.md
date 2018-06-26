@@ -432,7 +432,7 @@ var person = {
 
 ### express.js
 
-
+--- week9 Client side libraries
 ---
 ## week10 REST Web Services
 ### Web Services
@@ -454,7 +454,7 @@ var person = {
 		- 显式使用HTTP methods
 		- 无状态
 		- 类似目录的结构
-		
+	-看Url就知道要什么;看http method就知道干什么;看http status code就知道结果如何
 ---
 ## week11 Security
 ### General security concerns
