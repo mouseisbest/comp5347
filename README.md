@@ -538,7 +538,10 @@ var person = {
 ### express.js
 
 --- 
-week9 Client side libraries
+## week9 Client side libraries
+- jQuery
+	- lightweight js library
+	- 
 ---
 ## week10 REST Web Services
 ### Web Services
