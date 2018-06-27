@@ -552,7 +552,11 @@ var person = {
 	- id selector:```$("#id")``` 此id对应的元素
 	- pseudo selectors:```$("a:visited")``` 所有已经访问过的link
 - 注册event handler
-	- ``` $("p").click(function(){ action goes here!! });```
+	- 	```
+		$("p").click(function(){ 
+			action goes here!! 
+		});
+		```
 	- event有：click, dbclick, mouseenter, mouseleave
 - DOM 操作
 	- append 添加到指定节点的末尾
