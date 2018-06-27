@@ -465,7 +465,7 @@ var person = {
 	- 首先要执行URL Parse才有后面两个
 	- GET: ```req.query.name```
 	- POST: ```req.body.name```
-<<<<<<< HEAD
+
 ### express.js basics
 - routing: MVC pattern
 	- Express is a popular framework for building MVC node.js application
@@ -541,6 +541,11 @@ var person = {
 ## week9 Client side libraries
 - jQuery
 	- lightweight js library
+	- 选择DOM元素，注册event handler，管理异步请求
+	- 作为单个js文件发布
+	- CDN的优势：减少服务器的带宽负载；用户可能有其他网站缓存的副本，即减少了加载时间
+	- CDN的缺点：CDN may be down
+- jQuery selectors
 	- 
 ---
 ## week10 REST Web Services
