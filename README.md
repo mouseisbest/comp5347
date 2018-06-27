@@ -546,7 +546,16 @@ var person = {
 	- CDN的优势：减少服务器的带宽负载；用户可能有其他网站缓存的副本，即减少了加载时间
 	- CDN的缺点：CDN may be down
 - jQuery selectors
-	- 
+	- universal selector:$("*") 所有的元素，较慢
+	- element selector:$("tag") 此tag的所有元素
+	- class selector:$(".class") 此class的所有元素
+	- id selector:$("#id") 此id对应的元素
+	- pseudo selectors:$("a:visited") 所有已经访问过的link
+- 注册event handler
+	- ``` $("p").click(function(){
+	// action goes here!! });```
+	- event有：click, dbclick, mouseenter, mouseleave
+	
 ---
 ## week10 REST Web Services
 ### Web Services
@@ -614,7 +623,7 @@ var person = {
 		- Actions can be application defined, or use HTTP methods
 - 3rd party Authentication
 	- Authentication can be delegated to third party
-	- OpenID: 3rd authentication scheme is popluar and used under many major websites
+	- OpenID: 3rd authentication scheme is popular and used under many major websites
 		- developers do not need to implement the standard function again and again.
 		- OpenID providers have better mechanisms to protect credentials
 		- Users do not need to memorize multiple pair of username/password
@@ -652,11 +661,11 @@ var person = {
 		- To solve this problem: validate input, use safe encoding
 	- SQL injection example:
 		- Table drop:
-			- INSERT INTO students (last_name, first_name) VALUES ('XKCD', '/*Robert’); DROP TABLE Students;-- */')
+			- ```INSERT INTO students (last_name, first_name) VALUES ('XKCD', '/*Robert’); DROP TABLE Students;-- */')```
 		- Login bypass:
-			- SELECT * FROM users WHERE username = '/* ' or 1=1--*/' AND password = ''
+			- ```SELECT * FROM users WHERE username = '/* ' or 1=1--*/' AND password = ''```
 		- NoSQL injection:
-			- db.users.find({username: /*{"$gt": ""}*/, password: /*{"$gt": ""}*/});
+			- ```db.users.find({username: /*{"$gt": ""}*/, password: /*{"$gt": ""}*/});```
 	- XSS example: response contains executable script from user input
 		- ```
 			<script>var img = document.createElement(“img”);
