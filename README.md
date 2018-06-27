@@ -546,16 +546,39 @@ var person = {
 	- CDN的优势：减少服务器的带宽负载；用户可能有其他网站缓存的副本，即减少了加载时间
 	- CDN的缺点：CDN may be down
 - jQuery selectors
-	- universal selector:$("*") 所有的元素，较慢
-	- element selector:$("tag") 此tag的所有元素
-	- class selector:$(".class") 此class的所有元素
-	- id selector:$("#id") 此id对应的元素
-	- pseudo selectors:$("a:visited") 所有已经访问过的link
+	- universal selector:```$("*")``` 所有的元素，较慢
+	- element selector:```$("tag")``` 此tag的所有元素
+	- class selector:```$(".class")``` 此class的所有元素
+	- id selector:```$("#id")``` 此id对应的元素
+	- pseudo selectors:```$("a:visited")``` 所有已经访问过的link
 - 注册event handler
 	- ``` $("p").click(function(){
-	// action goes here!! });```
+	 action goes here!! });```
 	- event有：click, dbclick, mouseenter, mouseleave
-	
+- DOM 操作
+	- append 添加到指定节点的末尾
+	- prepend 添加到指定节点的开头
+	- 常用方法： 
+		- attr: 获得/设置属性("属性名","值")
+		- css: 获得/设置css属性("属性名","值")
+		- html: 获得/设置html内容
+		- val: 获得元素内容（input）
+- 同步/异步请求
+	- 传统web app只用同步请求，缺点： 反应慢
+	- 异步请求：
+		- Asynchronous request allow the user to continue interacting with the application while the server processes the request concurrently
+		- 由客户端脚本（js）提供，生成一个XMLHttpRequest来管理请求
+- jQuery ajax支持:
+	- load(): 有data是POST,无data是GET
+	- get(), post()你懂得
+	- jqXHR.done(), fail, always ~~~ try-catch-finally
+- 同源问题
+	- 定义： 相同的协议、主机名、端口号
+	- 如果两个页面同源，那么浏览器允许脚本访问另外一个页面的数据
+	- XMLHttpRequest Security
+		- XMLHttpRequest对象不支持跨域请求
+		- 解决此问题有两个办法: 服务端代理和Cross-origin resource sharing (CORS). 使用一个HTML5的新功能
+
 ---
 ## week10 REST Web Services
 ### Web Services
@@ -570,7 +593,7 @@ var person = {
 	- REST-style architectures consist of clients and servers. 
 	- Clients initiate requests to servers; servers process requests and return appropriate responses.
 	- Resource：资源，即数据（前面说过网络的核心）。比如 newsfeed，friends等； Representation：某种表现形式，比如用JSON，XML，JPEG等；
-	- State Transfer：状态变化。通过HTTP动词实现。
+	- State Transfer：状态变化。通过HTTP动词（GET, POST, PUT, DELETE）实现。
 	- 早期REST API格式： ```https://en.wikipedia.org/w/api.php?action=query&name=value```
 	- 现在的格式： URL+基本操作（GET, POST, PUT, DELETE）
 	- REST  设计原则：
