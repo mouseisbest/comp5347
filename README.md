@@ -29,9 +29,11 @@ total = 2RTT+transmit time
 	- expiration model 过期模型
 		- server-specified expiration 服务端指定过期时间：Cache-Control: no-cache; Cache-Control: max-age=60
 		- heuristic expiration 启发式缓存
+		- Cache Control与Expires是一组，他们是用来进行Freshness验证，也就是提供客户端检测文件是否足够新鲜，可以无需向服务端发起Validation请求就能保证并未过期可以直接使用。所有的from cache的请求实际上都是由于浏览器认为本地的缓存资源足够新鲜，所以无需额外请求而直接使用。
 	- validation model
 		- When a cache has a stale陈腐的 entry that it would like to use as a response to a clients request, it first has to check with the origin server (or possibly an intermediate cache with a fresh response) to see if its cached entry is still usable 先发送一个小开销的请求询问当前版本的缓存是否可用，可用则可节省开销，不可用则多一个RTT的开销
 		- No overhead of re-transmitting the whole response when the entry is valid, but incurs overhead in RTT.
+		- Last-Modified和ETag则是另一组控制信息，他们用来实现Validation。他们的职责是在本地缓存被浏览器判断可能不够新鲜的时候，会用这两组信息向服务器请求数据，如果服务器内容没有改变，那么约定服务器会返回304 HTTP Code表明这个缓存可以直接使用，无需重新拉取，而一旦服务器内容改变了就会返回200，同时返回新的文件内容。
 		- 感觉就考前面的，主要是过期模型的原理
 		- last-modified dates:
 		- entiry tage cache validators: Entity tags are used for comparing two or more entities from the same requested resource
