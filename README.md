@@ -62,7 +62,7 @@ total = 2RTT+transmit time
 			```
 	- HTML5 new semantic tags: <span style="color: red">(important)</span>
 		- ```<article>, <section>, <header>, <footer>, <aside>```
-		- ```<nac>``` navigation
+		- ```<nav>``` navigation
 - CSS: cascading style sheets
 	- ```selector {declaration, declaration}``` , each declaration: ```property:value```
 	- relative vs absolute measurement
@@ -533,6 +533,30 @@ var person = {
 - MongoDB 参考 [MongoDB](./mongodb.md)
 ---
 ## week 8
+- MongoDB indexing
+	- _id index: automatically indexed for all collections; unique, incremental
+	- other fields: ```db.<collectionName>.createIndex({<fieldName>:1});```
+		- 1: ascending; -1: descending
+	- compound index:
+		- a SINGLE index structure with references to multiple fields
+		- field order matters: indexes are sorted by the value of the first field, then second, third...
+- Multi-tier application architecture
+	- Maintain persistent data of the application
+	- CRUD operations (Create, Read, Update, Delete)
+	- DB server / DBMS
+		- RDBMS (MySQL, PostgreSQL)
+		- NoSQL (MongoDB, Redis)
+	- Express integrates with many DBMS
+- DB Drivers:
+	- DBMS works standalone like a "server" application
+	- DBMS provides language based drivers to allow developers to develop client in different languages
+- Higher level module/package
+	- Mongooes is the node.js module build on top of basic mongodb node.js driver
+		- data structure to match collection "schema"
+		- validation mechanism
+		- connection mangement
+- Way to communicate with a DB
+	- 
 ---
 
 ### express.js
