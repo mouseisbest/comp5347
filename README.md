@@ -661,6 +661,7 @@ var person = {
 			movieSchema.methods.findSimilarYear = function(cb) {
 				return this.model('Movie').find({ Year: this.Year }, callback);
 			};
+			// document !!!
 			var newMovie = new Movie(
 			{
 				MovieID: 292,
@@ -680,7 +681,8 @@ var person = {
 			)
 			```
 		- Instance method vs. static method
-			- 
+			- static method: the method is attached to Model object
+			- instance method: the method is attached to document object.
 ---
 
 ### express.js
