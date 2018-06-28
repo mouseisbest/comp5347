@@ -556,7 +556,131 @@ var person = {
 		- validation mechanism
 		- connection mangement
 - Way to communicate with a DB
-	- 
+	- DB native query language (SQL)
+	- Object Data Model / Object Relational Model
+	- Web application data are objects, and are mapped into database
+		- Productivity: data as js object rather than DB semantics (grammar)
+		- Performance: ofter slower due to the mapping between objects and DB formats
+- Mongoose
+	- Event-driven programming style should be used (asynchronous)
+	- Basic concepts:
+		- Schema: Schema is an abstract data structure defines the shape of the documents in a collection
+		- Model: Model is a compiled version of schema, model is the schema binded with a collection
+		- Document: Document is an instance of Model, mapped to the actual document in a collection
+		- Examples:
+			- collection:
+			```
+			{
+			"_id" : 1.0,
+			"Title" : "Sense and Sensibility",
+			"Year" : 1995.0,
+			"Genres" : [ "Comedy", "Drama",
+			“Romance”]
+			}
+			```
+			- Schema:
+			```
+			var movieSchema = new Schema({
+			Title: String,
+			Year: Number,
+			Genres: [String]
+			})
+			```
+			- Model:
+			```
+			var Movie = mongooes.model(‘Movie’,movieSchema, ‘movies’)
+			```
+			- Document
+			```
+			var aMovie = new Movie({title=“Ride With the Devil”})
+			```
+	- Queries:
+		- All queries run on model (find, update, aggregate), are similar to shell command query
+		- Two ways to run callback function
+			- Queries with Callback Function
+				- The operation will be executed immediately with results passed to the callback
+				```
+				Movie.find({}, function(err,movies){
+					if (err){
+							console.log("Query error!")
+							}else{
+								console.log(movies)
+							}
+						}
+					)
+				```
+			- Query Instance – No Callback Passed
+				- An instance of the query is returned which provides a special query builder interface
+				```
+				Var query = Movie.find({Year: 1996});
+				query.select({Title:1,Year:1});
+				query.exec(function(err,movies){
+					if (err){
+						console.log("Query error!")
+					}else{
+						console.log("Movies in year 1996:")
+						console.log(movies)
+					}
+				}
+				)
+				```
+	- Insert documents
+		```
+		var newMovie = new Movie(
+		{
+			MovieID: 292,
+			Title: "Outbreak",
+			Year: 1995,
+			Genres: ['Action','Drama','Sci-Fi','Thriller']}
+		)
+		newMovie.save()
+		```
+	- Static methods
+		- Static methods are the queries defined on Model (collection).
+		- Any standard query/aggregation can be implemented as static method.
+		- Example:
+			```
+			movieSchema.statics.findByYear = function(year, callback){
+				return this
+				.find({Year: year})
+				.select({Title:1,Year:1})
+				.exec(callback)
+			}
+			var Movie = mongoose.model('Movie', movieSchema, ‘movies’)
+			Movie.findByYear(1995, function(err,movies){
+				if (err){
+					console.log("Query error!")
+						}else{
+							console.log("Movies in year 1995:")
+							console.log(movies)
+						}
+						})
+			```
+		- Instance methods
+			```
+			movieSchema.methods.findSimilarYear = function(cb) {
+				return this.model('Movie').find({ Year: this.Year }, callback);
+			};
+			var newMovie = new Movie(
+			{
+				MovieID: 292,
+				Title: "Outbreak",
+				Year: 1995,
+				Genres: ['Action','Drama','Sci-Fi','Thriller']}
+			)
+			newMovie.findSimilarYear(function(err,movies){
+			if (err){
+				console.log("Query error!")
+			}else{
+				console.log("The movies released in the same year as " +
+				newMovie.Title + " are:")
+				console.log(movies)
+			}
+			}
+			)
+			```
+		- Instance method vs. static method
+			- 
 ---
 
 ### express.js
